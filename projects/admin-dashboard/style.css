@@ -1,0 +1,30 @@
+@font-face {
+   font-family: 'lato';
+   font-style: normal;
+   font-weight: normal;
+   font-display: swap;
+   src: url(./assets/font/lato-regular-webfont.woff2) format('woff2'),
+   url(./assets/font/lato-regular-webfont.woff) format('woff');
+}
+
+:root {
+   --primary-color: #3498db;
+   --secondary-color: #ffff00;
+   --accent-color: #e74c3c;
+   --text-color: #333;
+   --background-color: #f4f4f4;
+   --font-family: 'lato', sans-serif;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: var(--font-family);
+   background-color: var(--background-color);
+   color: var(--text-color);
+   line-height: 1.6;
+}
