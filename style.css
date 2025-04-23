@@ -33,6 +33,15 @@
     padding: 2rem;
     background-color: #d4dde5;
     height: calc(100dvh - 250px);
+
+    ol {
+       list-style-type: lower-roman;
+
+       a {
+          color: #333;
+          font-weight: bold;
+       }
+    }
  }
 
  footer {
