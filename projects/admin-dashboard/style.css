@@ -215,7 +215,7 @@ header {
          }
 
          p {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             line-height: 1.6;
             color: var(--text-color);
@@ -253,7 +253,7 @@ header {
             }
    
             p {
-               font-size: 13px;
+               font-size: 14px;
                font-weight: 500;
                line-height: 1.6;
                color: var(--text-color);
