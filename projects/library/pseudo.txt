@@ -1,0 +1,29 @@
+/**
+ *  ---UI---
+ * 
+ * DESCRIPTION:
+ * A simple layout with display box and a button, which opens a modal that collects book details.
+ * Among the inputs is a checkbox to collect read or not.
+ *
+ * THE UI PLAN:
+ * -- a div that displays added books
+ *    :checkboxes in front each added book
+ *    :delete btns after each added book
+ * 
+ * -- add book custom modal (brought up by New Book btn)
+ *    :inputs with custom placeholders that shrink on focus/:valid
+ *    :Add Book btn
+ *    :Cancel/Close btn
+ *
+ *
+ *  ---Logic---
+ *
+ * An array to store book objects
+ * -- each created book object, gets pushed to array
+ *
+ * Book obj constructor with book details + id
+ * A fn that;
+ *    i. creates new book
+ *    ii. creates unique ids per new book
+ *    iii. pushes new books to the array
+ */
