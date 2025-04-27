@@ -21,6 +21,8 @@ function addBookToLibrary(title, author, pages, publisher, year) {
 	const newBook = new Book(title, author, pages, publisher, year, id);
 
 	myLibrary.push(newBook);
+	displayNewBook();
+	clearInputs();
 }
 
 newBookBtn.addEventListener('click', () => {
@@ -53,3 +55,17 @@ modalBtns.addEventListener('click', (event) => {
 		);
 	}
 });
+
+function displayNewBook() {
+	const p = document.createElement('p');
+	p.textContent = `${titleEl.value} by ${authorEl.value}, ${pagesEl.value}, ${publisherEl.value} ${yearEl.value}.`;
+	display.appendChild(p);
+}
+
+function clearInputs() {
+	titleEl.value = '';
+	authorEl.value = '';
+	pagesEl.value = '';
+	publisherEl.value = '';
+	yearEl.value = '';
+}
