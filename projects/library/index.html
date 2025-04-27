@@ -10,43 +10,43 @@
    <div class="container">
       <div class="display"></div>
       <button class="new-book-btn">New Book</button>
-
-      <form>
-         <h2>Add New Book</h2>
-
-         <fieldset>
-            <div class="input-box">
-               <input type="text" class="title" id="title" required>
-               <label for="title">Enter book title</label>
-            </div>
-            <div class="input-box">
-               <input type="text" class="author" id="author" required>
-               <label for="author">Enter book's author</label>
-            </div>
-            <div class="input-box">
-               <input type="number" class="pages" id="pages" required>
-               <label for="pages">Enter number of pages</label>
-            </div>
-            <div class="input-box">
-               <input type="text" class="publisher" id="publisher" required>
-               <label for="publisher">Enter publisher</label>
-            </div>
-         </fieldset>
-         <fieldset>
-            <legend>Have you read the book?</legend>
-            <label>
-               <input type="radio" name="read?" class="yes"> Yes
-            </label>
-            <label>
-               <input type="radio" name="read?" class="no"> No
-            </label>
-         </fieldset>
-         <div class="btns">
-            <button type="button" class="cancel">Cancel</button>
-            <button type="submit" class="add-book">Add Book</button>
-         </div>
-      </form>
    </div>
+
+   <form class="modal">
+      <h2>Add New Book</h2>
+
+      <fieldset>
+         <div class="input-box">
+            <input type="text" class="title" id="title" required>
+            <label for="title">Enter book title</label>
+         </div>
+         <div class="input-box">
+            <input type="text" class="author" id="author" required>
+            <label for="author">Enter book's author</label>
+         </div>
+         <div class="input-box">
+            <input type="number" class="pages" id="pages" required>
+            <label for="pages">Enter number of pages</label>
+         </div>
+         <div class="input-box">
+            <input type="text" class="publisher" id="publisher" required>
+            <label for="publisher">Enter publisher</label>
+         </div>
+      </fieldset>
+      <fieldset>
+         <legend>Have you read the book?</legend>
+         <label>
+            <input type="radio" name="read?" class="yes"> Yes
+         </label>
+         <label>
+            <input type="radio" name="read?" class="no"> No
+         </label>
+      </fieldset>
+      <div class="btns">
+         <button type="button" class="cancel">Cancel</button>
+         <button type="submit" class="add-book">Add Book</button>
+      </div>
+   </form>
 
    <script src="app.js" defer></script>
 </body>
