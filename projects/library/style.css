@@ -95,3 +95,67 @@ body {
 	}
 }
 
+.modal {
+	width: 100vw;
+	height: 100dvh;
+	position: fixed;
+	backdrop-filter: blur(15px);
+	
+	form.modal-content {
+		width: 90%;
+		min-width: 280px;
+		max-width: 480px;
+		padding: 20px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: #d4dde5;
+		min-height: 500px;
+		max-height: fit-content;
+		box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+
+		h2 {
+			display: inline-block;
+			margin-bottom: 18px;
+			font-family: var(--heading-font);
+			border-bottom: 3px groove var(--text-color);
+		}
+
+		fieldset {
+			border: none;
+
+			.input-box {
+				position: relative;
+				margin-bottom: 20px;
+
+				input {
+					width: 100%;
+					display: block;
+					height: 50px;
+					border: none;
+					background-color: #fff;
+					border-radius: 3px;
+					outline: none;
+					padding: 5px;
+
+					& + label {
+						position: absolute;
+						top: 50%;
+						left: 5px;
+						transform: translateY(-50%);
+						font-size: 15px;
+						color: #888;
+					}
+				}
+
+				input:focus + label {
+					top: 2px;
+					transform: unset;
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}
+
