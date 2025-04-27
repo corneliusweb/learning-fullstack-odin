@@ -100,6 +100,7 @@ body {
 	height: 100dvh;
 	position: fixed;
 	backdrop-filter: blur(15px);
+	display: none;
 
 	form.modal-content {
 		width: 90%;
@@ -148,7 +149,7 @@ body {
 						transform: translateY(-50%);
 						font-size: 15px;
 						color: #888;
-						transition: .2s;
+						transition: 0.2s;
 						cursor: text;
 					}
 				}
@@ -160,7 +161,62 @@ body {
 					font-size: 12px;
 				}
 			}
+
+			&:last-of-type {
+				color: var(--text-color);
+
+				& > div {
+					display: inline-flex;
+					align-items: center;
+					gap: 5px;
+					
+					input {
+						margin-top: 10px;
+						transform: scale(1.4);
+						outline: none;
+					}
+					
+					label {
+						margin-right: 25px;
+						margin-top: 10px;
+					}
+				}
+			}
+		}
+
+		div.btns {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			gap: 15px;
+			margin-top: 30px;
+
+			button {
+				width: calc(50% - 10px);
+				padding: 14px;
+				border: none;
+				font-size: 0.9em;
+				font-weight: 700;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+
+			.add-book {
+				background-color: var(--primary-color);
+				color: var(--background-color);
+			}
+			.add-book:hover{
+				background-color: #1b81c5;
+			}
+
+			.cancel {
+				background-color: var(--text-color);
+				color: var(--background-color);
+			}
+
+			.cancel:hover{
+				background-color: #000;
+			}
 		}
 	}
 }
-
