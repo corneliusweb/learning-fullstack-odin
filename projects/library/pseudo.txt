@@ -7,7 +7,6 @@
  *
  * THE UI PLAN:
  * -- a div that displays added books
- *    :checkboxes in front each added book
  *    :delete btns after each added book
  * 
  * -- add book custom modal (brought up by New Book btn)
@@ -16,7 +15,7 @@
  *    :Cancel/Close btn
  *
  *
- *  ---Logic---
+ *  ---LOGIC---
  *
  * An array to store book objects
  * -- each created book object, gets pushed to array
