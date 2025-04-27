@@ -86,7 +86,7 @@ body {
 		color: var(--background-color);
 		text-align: center;
 		float: right;
-		transition: transform .1s;
+		transition: transform 0.1s;
 	}
 
 	button:hover {
@@ -100,7 +100,7 @@ body {
 	height: 100dvh;
 	position: fixed;
 	backdrop-filter: blur(15px);
-	
+
 	form.modal-content {
 		width: 90%;
 		min-width: 280px;
@@ -128,29 +128,34 @@ body {
 			.input-box {
 				position: relative;
 				margin-bottom: 20px;
+				cursor: text;
 
 				input {
 					width: 100%;
 					display: block;
-					height: 50px;
+					height: 58px;
 					border: none;
 					background-color: #fff;
 					border-radius: 3px;
 					outline: none;
-					padding: 5px;
+					padding: 8px;
+					font-size: 1em;
 
 					& + label {
 						position: absolute;
 						top: 50%;
-						left: 5px;
+						left: 8px;
 						transform: translateY(-50%);
 						font-size: 15px;
 						color: #888;
+						transition: .2s;
+						cursor: text;
 					}
 				}
 
-				input:focus + label {
-					top: 2px;
+				input:focus + label,
+				input:valid + label {
+					top: 1px;
 					transform: unset;
 					font-size: 12px;
 				}
