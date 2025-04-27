@@ -23,29 +23,33 @@
    
          <fieldset>
             <div class="input-box">
-               <input type="text" class="title" id="title" required>
+               <input type="text" class="title" id="title" autocomplete="" required>
                <label for="title">Enter book title</label>
             </div>
             <div class="input-box">
-               <input type="text" class="author" id="author" required>
+               <input type="text" class="author" id="author" autocomplete="" required>
                <label for="author">Enter book's author</label>
             </div>
             <div class="input-box">
-               <input type="number" class="pages" id="pages" required>
+               <input type="number" class="pages" id="pages" autocomplete="" required>
                <label for="pages">Enter number of pages</label>
             </div>
             <div class="input-box">
-               <input type="text" class="publisher" id="publisher" required>
+               <input type="text" class="publisher" id="publisher" autocomplete="" required>
                <label for="publisher">Enter publisher</label>
+            </div>
+            <div class="input-box">
+               <input type="number" class="year" id="year" autocomplete="" required>
+               <label for="year">Enter year</label>
             </div>
          </fieldset>
          <fieldset>
-            <legend>Have you read the book?</legend>
+            <legend>Have you read this book?</legend>
             <label>
                <input type="radio" name="read?" class="yes"> Yes
             </label>
             <label>
-               <input type="radio" name="read?" class="no"> No
+               <input type="radio" name="read?" class="no" checked> No
             </label>
          </fieldset>
          <div class="btns">
