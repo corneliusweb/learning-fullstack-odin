@@ -59,9 +59,11 @@ body {
 		}
 
 		p {
-			line-height: 1.2;
-			font-size: 1rem;
+			line-height: 1.6;
+			font-size: 15px;
 			max-width: 70ch;
+			color: #444;
+			margin-bottom: 3px;
 		}
 	}
 
@@ -72,7 +74,7 @@ body {
 		border: 1px solid;
 		padding: 15px;
 		border-radius: 4px;
-		margin-bottom: 8px;
+		margin-bottom: 15px;
 	}
 
 	button {
@@ -87,6 +89,8 @@ body {
 		text-align: center;
 		float: right;
 		transition: transform 0.1s;
+		font-size: 0.9em;
+		font-weight: 700;
 	}
 
 	button:hover {
@@ -169,13 +173,13 @@ body {
 					display: inline-flex;
 					align-items: center;
 					gap: 5px;
-					
+
 					input {
 						margin-top: 10px;
 						transform: scale(1.4);
 						outline: none;
 					}
-					
+
 					label {
 						margin-right: 25px;
 						margin-top: 10px;
@@ -205,7 +209,7 @@ body {
 				background-color: var(--primary-color);
 				color: var(--background-color);
 			}
-			.add-book:hover{
+			.add-book:hover {
 				background-color: #1b81c5;
 			}
 
@@ -214,7 +218,7 @@ body {
 				color: var(--background-color);
 			}
 
-			.cancel:hover{
+			.cancel:hover {
 				background-color: #000;
 			}
 		}
