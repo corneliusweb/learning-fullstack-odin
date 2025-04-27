@@ -45,12 +45,14 @@
          </fieldset>
          <fieldset>
             <legend>Have you read this book?</legend>
-            <label>
-               <input type="radio" name="read?" class="yes"> Yes
-            </label>
-            <label>
-               <input type="radio" name="read?" class="no" checked> No
-            </label>
+            <div>
+               <input type="radio" id="yes" name="read?" class="yes">
+               <label for="yes">Yes</label>
+            </div>
+            <div>
+               <input type="radio" id="no" name="read?" class="no" checked>
+               <label for="no">No</label>
+            </div>
          </fieldset>
          <div class="btns">
             <button type="button" class="cancel">Cancel</button>
