@@ -43,6 +43,7 @@ body {
 	min-height: 300px;
 	max-height: fit-content;
 	padding: 1rem 1.5rem;
+	border-radius: 5px;
 	background-color: var(--background-color);
 
 	header {
@@ -51,8 +52,16 @@ body {
 		h1 {
 			line-height: 1.6;
 			font-family: var(--heading-font);
-			letter-spacing: -0.2px;
+			letter-spacing: -0.5px;
+			text-transform: uppercase;
 			text-align: center;
+			color: #222;
+		}
+
+		p {
+			line-height: 1.2;
+			font-size: 1rem;
+			max-width: 70ch;
 		}
 	}
 
@@ -71,12 +80,18 @@ body {
 		width: 100px;
 		height: 38px;
 		cursor: pointer;
-		background: #3498db;
+		background: var(--primary-color);
 		border: none;
-		border-radius: 7px;
+		border-radius: 3px;
 		color: var(--background-color);
 		text-align: center;
 		float: right;
+		transition: transform .1s;
+	}
+
+	button:hover {
+		background-color: #1b81c5;
+		transform: translate(1px, 1px);
 	}
 }
 
