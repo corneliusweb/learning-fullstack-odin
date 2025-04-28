@@ -69,8 +69,8 @@ function displayNewBook(id) {
 	deleteBtn.textContent = 'X';
 	deleteBtn.className = 'delete-btn';
 
-	span.textContent = `${titleEl.value} `; // to allow italicizing of titles
-	para.textContent = `by ${authorEl.value}, ${pagesEl.value}, ${
+	span.textContent = `${titleEl.value}`; // to allow italicizing of titles
+	para.textContent = `  by ${authorEl.value}, ${pagesEl.value}, ${
 		publisherEl.value
 	} ${yearEl.value}. ${
 		read.checked ? 'You have read this book' : "You haven't read this book"
@@ -83,7 +83,6 @@ function displayNewBook(id) {
 
 	deleteBtn.addEventListener('click', (event) => {
 		const bookId = event.target.getAttribute('data-list');
-		
 
 		myLibrary = myLibrary.filter((book) => book.id !== bookId);
 

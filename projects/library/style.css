@@ -36,7 +36,7 @@ body {
 }
 
 .container {
-	width: 90%;
+	width: 93%;
 	max-width: 480px;
 	min-width: 280px;
 	margin: auto;
@@ -70,11 +70,46 @@ body {
 	.display {
 		width: 100%;
 		min-height: 100px;
-		max-height: fit-content;
+		max-height: 300px;
+		overflow-y: scroll;
 		border: 1px solid;
 		padding: 15px;
+		padding-right: 7px;
 		border-radius: 4px;
 		margin-bottom: 15px;
+
+		div {
+			position: relative;
+			padding-right: 30px;
+
+			button {
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				width: unset;
+				padding: 5px 10px;
+				height: unset;
+				background-color: #821919;
+			}
+
+			p {
+				max-width: 70ch;
+				text-wrap: smooth;
+				font-style: 0.8em;
+				line-height: 1.6;
+				color: var(--text-color);
+				letter-spacing: 0.1px;
+
+				span {
+					font-style: italic;
+				}
+			}
+
+			& + div {
+				margin-top: 30px;
+			}
+		}
 	}
 
 	button {
