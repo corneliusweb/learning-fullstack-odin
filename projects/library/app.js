@@ -28,7 +28,6 @@ newBookBtn.addEventListener('click', () => {
 	modal.style.display = 'block';
 });
 
-const modalBtns = document.querySelector('.modal .btns');
 document
 	.querySelector('form')
 	.addEventListener('submit', (e) => e.preventDefault());
@@ -41,19 +40,29 @@ const publisherEl = document.querySelector('#publisher');
 const yearEl = document.querySelector('#year');
 const read = document.querySelector('.modal .yes');
 
+const modalBtns = document.querySelector('.modal .btns');
+
 modalBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('cancel')) {
 		modal.style.display = 'none';
 	} else if (event.target.classList.contains('add-book')) {
 		//
-		addBookToLibrary(
-			titleEl.value,
-			authorEl.value,
-			pagesEl.value,
-			publisherEl.value,
-			yearEl.value
-		);
-		modal.style.display = 'none';
+		if (
+			titleEl.value !== '' &&
+			authorEl.value !== '' &&
+			pagesEl.value !== '' &&
+			publisherEl.value !== '' &&
+			yearEl.value !== ''
+		) {
+			addBookToLibrary(
+				titleEl.value,
+				authorEl.value,
+				pagesEl.value,
+				publisherEl.value,
+				yearEl.value
+			);
+			modal.style.display = 'none';
+		}
 	}
 });
 
@@ -69,8 +78,8 @@ function displayNewBook(id) {
 	deleteBtn.textContent = 'X';
 	deleteBtn.className = 'delete-btn';
 
-	span.textContent = `${titleEl.value}`; // to allow italicizing of titles
-	para.textContent = `  by ${authorEl.value}, ${pagesEl.value}, ${
+	span.textContent = `${titleEl.value} `; // to allow italicizing of titles
+	para.textContent = ` by ${authorEl.value}, ${pagesEl.value}, ${
 		publisherEl.value
 	} ${yearEl.value}. ${
 		read.checked ? 'You have read this book' : "You haven't read this book"
@@ -88,6 +97,12 @@ function displayNewBook(id) {
 
 		div.remove();
 	});
+
+	//reset radio btn
+	if (read.checked === true) {
+		const no = document.querySelector('.modal .no');
+		no.checked = true;
+	}
 }
 
 function clearInputs() {
