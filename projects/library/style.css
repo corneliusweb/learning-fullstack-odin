@@ -40,11 +40,13 @@ body {
 	max-width: 480px;
 	min-width: 280px;
 	margin: auto;
-	min-height: 300px;
+	min-height: 350px;
 	max-height: fit-content;
 	padding: 1rem 1.5rem;
+	padding-bottom: 1.5rem;
 	border-radius: 5px;
 	background-color: var(--background-color);
+	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
 
 	header {
 		margin-bottom: 15px;
@@ -72,15 +74,17 @@ body {
 		min-height: 100px;
 		max-height: 300px;
 		overflow-y: scroll;
+		scroll-behavior: smooth;
+		scrollbar-width: thin;
 		border: 1px solid;
 		padding: 15px;
 		padding-right: 7px;
 		border-radius: 4px;
-		margin-bottom: 15px;
+		margin-bottom: 24px;
 
 		div {
 			position: relative;
-			padding-right: 30px;
+			padding-right: 42px;
 
 			button {
 				position: absolute;
@@ -90,16 +94,22 @@ body {
 				width: unset;
 				padding: 5px 10px;
 				height: unset;
-				background-color: #821919;
+				background-color: #e94040;
+			}
+			
+			button:hover {
+				background-color: #a01212;
 			}
 
 			p {
-				max-width: 70ch;
-				text-wrap: smooth;
-				font-style: 0.8em;
-				line-height: 1.6;
+				max-width: 68ch;
+				overflow-wrap: break-word;
+				word-break: break-word;
+				font-size: 0.95em;
+				line-height: 1.2;
 				color: var(--text-color);
 				letter-spacing: 0.1px;
+				text-align: justify;
 
 				span {
 					font-style: italic;
@@ -107,7 +117,7 @@ body {
 			}
 
 			& + div {
-				margin-top: 30px;
+				margin-top: 20px;
 			}
 		}
 	}
@@ -130,7 +140,7 @@ body {
 
 	button:hover {
 		background-color: #1b81c5;
-		transform: translate(1px, 1px);
+		transform: translate(0.5px, 0.5px);
 	}
 }
 
@@ -157,7 +167,7 @@ body {
 
 		h2 {
 			display: inline-block;
-			margin-bottom: 18px;
+			margin-bottom: 25px;
 			font-family: var(--heading-font);
 			border-bottom: 3px groove var(--text-color);
 		}
@@ -178,26 +188,31 @@ body {
 					background-color: #fff;
 					border-radius: 3px;
 					outline: none;
-					padding: 8px;
-					font-size: 1em;
+					padding: 35px 8px 20px;
+					font-size: 0.9em;
 
 					& + label {
 						position: absolute;
 						top: 50%;
 						left: 8px;
 						transform: translateY(-50%);
-						font-size: 15px;
-						color: #888;
 						transition: 0.2s;
-						cursor: text;
+						font-size: 1em;
+						font-weight: 400;
+						color: rgba(0, 0, 0, 0.54);
+						opacity: 0.6;
+						letter-spacing: normal;
+						pointer-events: none;
+						user-select: none;
+						font-family: inherit;
 					}
 				}
 
 				input:focus + label,
 				input:valid + label {
-					top: 1px;
+					top: 7px;
 					transform: unset;
-					font-size: 12px;
+					font-size: 14px;
 				}
 			}
 
