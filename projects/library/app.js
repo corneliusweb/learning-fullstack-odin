@@ -1,8 +1,7 @@
-const display = document.querySelector('.display');
 const modal = document.querySelector('.modal');
 const newBookBtn = document.querySelector('.new-book-btn');
 
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, publisher, year, id) {
 	if (!new.target) {
@@ -21,7 +20,7 @@ function addBookToLibrary(title, author, pages, publisher, year) {
 	const newBook = new Book(title, author, pages, publisher, year, id);
 
 	myLibrary.push(newBook);
-	displayNewBook();
+	displayNewBook(id);
 	clearInputs();
 }
 
@@ -40,6 +39,7 @@ const authorEl = document.querySelector('#author');
 const pagesEl = document.querySelector('#pages');
 const publisherEl = document.querySelector('#publisher');
 const yearEl = document.querySelector('#year');
+const read = document.querySelector('.modal .yes');
 
 modalBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('cancel')) {
@@ -53,13 +53,42 @@ modalBtns.addEventListener('click', (event) => {
 			publisherEl.value,
 			yearEl.value
 		);
+		modal.style.display = 'none';
 	}
 });
 
-function displayNewBook() {
-	const p = document.createElement('p');
-	p.textContent = `${titleEl.value} by ${authorEl.value}, ${pagesEl.value}, ${publisherEl.value} ${yearEl.value}.`;
-	display.appendChild(p);
+const display = document.querySelector('.display');
+
+function displayNewBook(id) {
+	const div = document.createElement('div');
+	const para = document.createElement('p');
+	const span = document.createElement('span');
+	const deleteBtn = document.createElement('button');
+
+	deleteBtn.setAttribute('data-list', id);
+	deleteBtn.textContent = 'X';
+	deleteBtn.className = 'delete-btn';
+
+	span.textContent = `${titleEl.value} `; // to allow italicizing of titles
+	para.textContent = `by ${authorEl.value}, ${pagesEl.value}, ${
+		publisherEl.value
+	} ${yearEl.value}. ${
+		read.checked ? 'You have read this book' : "You haven't read this book"
+	}`;
+
+	para.prepend(span);
+	div.appendChild(para);
+	div.appendChild(deleteBtn);
+	display.appendChild(div);
+
+	deleteBtn.addEventListener('click', (event) => {
+		const bookId = event.target.getAttribute('data-list');
+		
+
+		myLibrary = myLibrary.filter((book) => book.id !== bookId);
+
+		div.remove();
+	});
 }
 
 function clearInputs() {
