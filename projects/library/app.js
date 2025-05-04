@@ -1,7 +1,12 @@
+const form = document.querySelector('form');
 const modal = document.querySelector('.modal');
 const newBookBtn = document.querySelector('.new-book-btn');
 
 let myLibrary = [];
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+});
 
 function Book(title, author, pages, publisher, year, id) {
 	if (!new.target) {
@@ -21,16 +26,12 @@ function addBookToLibrary(title, author, pages, publisher, year) {
 
 	myLibrary.push(newBook);
 	displayNewBook(id);
-	clearInputs();
+	form.reset();
 }
 
 newBookBtn.addEventListener('click', () => {
 	modal.style.display = 'block';
 });
-
-document
-	.querySelector('form')
-	.addEventListener('submit', (e) => e.preventDefault());
 
 // get input DOM references
 const titleEl = document.querySelector('#title');
@@ -38,7 +39,7 @@ const authorEl = document.querySelector('#author');
 const pagesEl = document.querySelector('#pages');
 const publisherEl = document.querySelector('#publisher');
 const yearEl = document.querySelector('#year');
-const read = document.querySelector('.modal .yes');
+const readInModal = document.querySelector('.modal .yes'); // read checkbox inside of modal
 
 const modalBtns = document.querySelector('.modal .btns');
 
@@ -48,11 +49,11 @@ modalBtns.addEventListener('click', (event) => {
 	} else if (event.target.classList.contains('add-book')) {
 		//
 		if (
-			titleEl.value !== '' &&
-			authorEl.value !== '' &&
-			pagesEl.value !== '' &&
-			publisherEl.value !== '' &&
-			yearEl.value !== ''
+			titleEl.value &&
+			authorEl.value &&
+			pagesEl.value &&
+			publisherEl.value &&
+			yearEl.value
 		) {
 			addBookToLibrary(
 				titleEl.value,
@@ -73,20 +74,20 @@ function displayNewBook(id) {
 	const para = document.createElement('p');
 	const span = document.createElement('span');
 	const deleteBtn = document.createElement('button');
+	const readBtn = document.createElement('button');
 
+	readBtn.className = 'read-btn';
+	readBtn.textContent = 'Read';
 	deleteBtn.setAttribute('data-list', id);
 	deleteBtn.textContent = 'X';
 	deleteBtn.className = 'delete-btn';
 
 	span.textContent = `${titleEl.value} `; // to allow italicizing of titles
-	para.textContent = ` by ${authorEl.value}, ${pagesEl.value}, ${
-		publisherEl.value
-	} ${yearEl.value}. ${
-		read.checked ? 'You have read this book' : "You haven't read this book"
-	}`;
+	para.textContent = ` by ${authorEl.value}, ${pagesEl.value}, ${publisherEl.value} ${yearEl.value}.`;
 
 	para.prepend(span);
 	div.appendChild(para);
+	div.appendChild(readBtn);
 	div.appendChild(deleteBtn);
 	display.appendChild(div);
 
@@ -99,16 +100,8 @@ function displayNewBook(id) {
 	});
 
 	//reset radio btn
-	if (read.checked === true) {
+	if (readInModal.checked === true) {
 		const no = document.querySelector('.modal .no');
 		no.checked = true;
 	}
-}
-
-function clearInputs() {
-	titleEl.value = '';
-	authorEl.value = '';
-	pagesEl.value = '';
-	publisherEl.value = '';
-	yearEl.value = '';
 }
