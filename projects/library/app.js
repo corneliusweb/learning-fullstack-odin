@@ -71,24 +71,32 @@ const display = document.querySelector('.display');
 
 function displayNewBook(id) {
 	const div = document.createElement('div');
-	const para = document.createElement('p');
-	const span = document.createElement('span');
-	const deleteBtn = document.createElement('button');
-	const readBtn = document.createElement('button');
 
-	readBtn.className = 'read-btn';
-	readBtn.textContent = 'Read';
+	const bookInfoPara = document.createElement('p');
+	const bookTitleSpan = document.createElement('span');
+	bookInfoPara.prepend(bookTitleSpan);
+
+	bookTitleSpan.textContent = `${titleEl.value} `; // to allow italicizing of titles
+	bookInfoPara.textContent = ` by ${authorEl.value}, ${pagesEl.value}, ${publisherEl.value} ${yearEl.value}.`;
+
+	const readStatusPara = document.createElement('p');
+	const statusSpan = document.createElement('span');
+	const toggleReadBtn = document.createElement('button');
+	readStatusPara.prepend(statusSpan);
+	readStatusPara.appendChild(toggleReadBtn);
+	readStatusPara.className = 'book-read-status';
+
+	statusSpan.textContent = 'STATUS:';
+	toggleReadBtn.textContent = 'Read';
+
+	const deleteBtn = document.createElement('button');
 	deleteBtn.setAttribute('data-list', id);
 	deleteBtn.textContent = 'X';
 	deleteBtn.className = 'delete-btn';
 
-	span.textContent = `${titleEl.value} `; // to allow italicizing of titles
-	para.textContent = ` by ${authorEl.value}, ${pagesEl.value}, ${publisherEl.value} ${yearEl.value}.`;
-
-	para.prepend(span);
-	div.appendChild(para);
-	div.appendChild(readBtn);
+	div.appendChild(bookInfoPara);
 	div.appendChild(deleteBtn);
+	div.appendChild(readStatusPara);
 	display.appendChild(div);
 
 	deleteBtn.addEventListener('click', (event) => {
