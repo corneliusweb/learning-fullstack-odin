@@ -62,11 +62,13 @@ function displayBook(id) {
 
 	bookList.appendChild(paraDiv);
 	bookList.appendChild(btnDiv);
+
+	ol.appendChild(bookList);
 }
 
 // get modal elems
 
-// const modal = document.querySelector('.modal');
+const modal = document.querySelector('.modal');
 
-// const newBookBtn = document.querySelector('.new-book-btn');
-// newBookBtn.addEventListener('click', () => (modal.style.display = 'block'));
+const newBookBtn = document.querySelector('.new-book-btn');
+newBookBtn.addEventListener('click', () => (modal.style.display = 'block'));
