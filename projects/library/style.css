@@ -238,7 +238,7 @@ body {
 			}
 		}
 
-		div.btns {
+		div.modal-btns {
 			width: 100%;
 			display: flex;
 			justify-content: space-between;

@@ -13,7 +13,9 @@
          <p>Hey there,</p>
          <p>Welcome to our library. Click on the "New Book" button to start adding your books to the library.</p>
       </header>
-      <div class="display"></div>
+      <div class="display">
+         <ol></ol>
+      </div>
       <button class="new-book-btn">New Book</button>
    </div>
 
@@ -46,15 +48,15 @@
          <fieldset>
             <legend>Have you read this book?</legend>
             <div>
-               <input type="radio" id="yes" name="read?" class="yes">
+               <input type="radio" id="yes" name="read?">
                <label for="yes">Yes</label>
             </div>
             <div>
-               <input type="radio" id="no" name="read?" class="no" checked>
+               <input type="radio" id="no" name="read?" checked>
                <label for="no">No</label>
             </div>
          </fieldset>
-         <div class="btns">
+         <div class="modal-btns">
             <button type="button" class="cancel">Cancel</button>
             <button type="submit" class="add-book">Add Book</button>
          </div>
