@@ -82,42 +82,40 @@ body {
 		border-radius: 4px;
 		margin-bottom: 24px;
 
-		div {
-			position: relative;
-			padding-right: 42px;
+		li {
 
-			button {
-				position: absolute;
-				right: 0;
-				top: 50%;
-				transform: translateY(-50%);
-				width: unset;
-				padding: 5px 10px;
-				height: unset;
-				background-color: #e94040;
+			&:not(:first-of-type) {
+				margin-top: 25px;
 			}
-			
-			button:hover {
-				background-color: #a01212;
+
+			&::marker {
+				font-size: 11px;
+				font-weight: 500;
 			}
 
 			p {
-				max-width: 68ch;
-				overflow-wrap: break-word;
-				word-break: break-word;
-				font-size: 0.95em;
-				line-height: 1.2;
-				color: var(--text-color);
-				letter-spacing: 0.1px;
-				text-align: justify;
-
+				font-size: 14px;
+				margin-bottom: 15px;
+				position: relative;
+				padding-left: 2px;
+				
 				span {
-					font-style: italic;
+					display: inline-block;
+					width: 300px;
+					overflow-wrap: break-word;
 				}
-			}
-
-			& + div {
-				margin-top: 20px;
+				
+				button {
+					margin-left: 10px;
+					width: 85px;
+					height: 28px;
+					position: absolute;
+					right: 0;
+					top: 50%;
+					transform: translateY(-50%);
+					font-size: 12px;
+					font-weight: 400;
+				}
 			}
 		}
 	}
