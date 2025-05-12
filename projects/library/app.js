@@ -24,28 +24,34 @@ const pub = document.getElementById('publisher');
 const year = document.getElementById('year');
 
 function addBookToLibrary(title, author, pages, pub, year) {
-	const id = crypto.randomUUID(); // generate unique id
-	const newBook = new Book(title, author, pages, pub, year, id);
+	const newBook = new Book(
+		title,
+		author,
+		pages,
+		pub,
+		year,
+		crypto.randomUUID()
+	);
 
 	myLibrary.push(newBook);
-	displayBook(id);
+	displayBook(newBook);
 }
 
 const displayDiv = document.querySelector('.display');
 const ol = document.querySelector('.display ol');
 
-function displayBook(id) {
+function displayBook(book) {
 	const bookList = document.createElement('li');
 	const bookInfoPara = document.createElement('p');
 	const bookInfoText = document.createElement('span');
-	bookInfoText.innerHTML = `<em>${title.value}</em> ${author.value}, ${pages.value} pages, ${pub.value} ${year.value}.`;
+	bookInfoText.innerHTML = `<em>${book.title}</em> ${book.author}, ${book.pages} pages, ${book.pub} ${book.year}.`;
 
 	const deleteBtn = document.createElement('button');
 	deleteBtn.textContent = 'X';
 
 	// create deleteBtn attributes
 	const delBtnAttrs = {
-		'data-id': id,
+		'data-id': book.id,
 		class: 'del-btn',
 	};
 	Object.entries(delBtnAttrs).forEach(([key, value]) => {
@@ -54,7 +60,7 @@ function displayBook(id) {
 
 	deleteBtn.addEventListener('click', (e) => {
 		const bookId = e.target.getAttribute('data-id');
-		myLibrary = myLibrary.filter((book) => book.id !== bookId);
+		myLibrary = myLibrary.filter((b) => b.id !== bookId);
 		bookList.remove();
 	});
 
@@ -64,24 +70,29 @@ function displayBook(id) {
 
 	const readStatusBtn = document.createElement('button');
 	readStatusBtn.textContent = 'Mark as read';
-	readStatusBtn.setAttribute('data-id', id);
 
 	readStatusBtn.addEventListener('click', (e) => {
-		const readBookId = e.target.getAttribute('data-id');
-		myLibrary.map((book) => {
-			if (book.id === readBookId) {
-				book.toggleRead();
-			}
+		book.toggleRead();
 
-			if (book.read === true) {
-				readStatusText.textContent = 'You have read this book';
-				readStatusBtn.textContent = 'Mark not read';
-			} else if (book.read === false) {
-				readStatusText.textContent = 'You have not read this book';
-				readStatusBtn.textContent = 'Mark as read';
-			}
-		});
+		if (book.read) {
+			readStatusText.textContent = 'You have read this book';
+			readStatusBtn.textContent = 'Mark not read';
+		} else {
+			readStatusText.textContent = 'You have not read this book';
+			readStatusBtn.textContent = 'Mark as read';
+		}
 	});
+
+	const readYes = document.querySelector('.modal #yes');
+
+	if (readYes.checked) {
+		readStatusText.textContent = 'You have read this book';
+		readStatusBtn.textContent = 'Mark not read';
+		book.toggleRead();
+	} else {
+		readStatusText.textContent = 'You have not read this book';
+		readStatusBtn.textContent = 'Mark as read';
+	}
 
 	bookInfoPara.prepend(bookInfoText);
 	readStatusPara.prepend(readStatusText);
