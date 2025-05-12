@@ -66,9 +66,37 @@ function displayBook(id) {
 	ol.appendChild(bookList);
 }
 
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => e.preventDefault());
+
 // get modal elems
 
 const modal = document.querySelector('.modal');
 
 const newBookBtn = document.querySelector('.new-book-btn');
-newBookBtn.addEventListener('click', () => (modal.style.display = 'block'));
+newBookBtn.addEventListener(
+	'click',
+	() => ((modal.style.display = 'block'), form.reset())
+);
+
+const modalBtns = document.querySelector('.modal-btns');
+modalBtns.addEventListener('click', (e) => {
+	if (e.target.classList.contains('add-book')) {
+		if (
+			[title.value, author.value, pages.value, pub.value, year.value].every(
+				Boolean
+			)
+		) {
+			addBookToLibrary(
+				title.value,
+				author.value,
+				pages.value,
+				pub.value,
+				year.value
+			);
+			modal.style.display = 'none';
+		}
+	} else if (e.target.classList.contains('cancel')) {
+		modal.style.display = 'none';
+	}
+});
