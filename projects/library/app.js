@@ -10,6 +10,11 @@ function Book(title, author, pages, pub, year, id) {
 	this.read = false;
 }
 
+// set toggle read proto
+Book.prototype.toggleRead = function () {
+	this.read = !this.read;
+};
+
 // get input elems
 
 const title = document.getElementById('title');
@@ -47,12 +52,36 @@ function displayBook(id) {
 		deleteBtn.setAttribute(key, value);
 	});
 
+	deleteBtn.addEventListener('click', (e) => {
+		const bookId = e.target.getAttribute('data-id');
+		myLibrary = myLibrary.filter((book) => book.id !== bookId);
+		bookList.remove();
+	});
+
 	// create read status elems
 	const readStatusPara = document.createElement('p');
 	const readStatusText = document.createElement('span');
 
 	const readStatusBtn = document.createElement('button');
 	readStatusBtn.textContent = 'Mark as read';
+	readStatusBtn.setAttribute('data-id', id);
+
+	readStatusBtn.addEventListener('click', (e) => {
+		const readBookId = e.target.getAttribute('data-id');
+		myLibrary.map((book) => {
+			if (book.id === readBookId) {
+				book.toggleRead();
+			}
+
+			if (book.read === true) {
+				readStatusText.textContent = 'You have read this book';
+				readStatusBtn.textContent = 'Mark not read';
+			} else if (book.read === false) {
+				readStatusText.textContent = 'You have not read this book';
+				readStatusBtn.textContent = 'Mark as read';
+			}
+		});
+	});
 
 	bookInfoPara.prepend(bookInfoText);
 	readStatusPara.prepend(readStatusText);
