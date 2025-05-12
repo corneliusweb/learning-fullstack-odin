@@ -44,7 +44,7 @@ function displayBook(book) {
 	const bookList = document.createElement('li');
 	const bookInfoPara = document.createElement('p');
 	const bookInfoText = document.createElement('span');
-	bookInfoText.innerHTML = `<em>${book.title}</em> ${book.author}, ${book.pages} pages, ${book.pub} ${book.year}.`;
+	bookInfoText.innerHTML = `<em>${book.title}</em> by ${book.author}, ${book.pages} pages, ${book.pub} ${book.year}.`;
 
 	const deleteBtn = document.createElement('button');
 	deleteBtn.textContent = 'X';
