@@ -1,19 +1,37 @@
 let myLibrary = [];
 
-function Book(title, author, pages, pub, year, id) {
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.pub = pub;
-	this.year = year;
-	this.id = id;
-	this.read = false;
-}
+// function Book(title, author, pages, pub, year, id) {
+// 	this.title = title;
+// 	this.author = author;
+// 	this.pages = pages;
+// 	this.pub = pub;
+// 	this.year = year;
+// 	this.id = id;
+// 	this.read = false;
+// }
 
 // set toggle read proto
-Book.prototype.toggleRead = function () {
-	this.read = !this.read;
-};
+// Book.prototype.toggleRead = function () {
+// 	this.read = !this.read;
+// };
+
+//  Rewriting book obj with js class
+
+class Book {
+	constructor(title, author, pages, pub, year, id) {
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+		this.pub = pub;
+		this.year = year;
+		this.id = id;
+		this.read = false;
+	}
+
+	toggleRead() {
+		this.read = !this.read;
+	}
+}
 
 // get input elems
 
