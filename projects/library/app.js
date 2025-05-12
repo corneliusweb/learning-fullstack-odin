@@ -23,6 +23,7 @@ function addBookToLibrary(title, author, pages, pub, year) {
 	const newBook = new Book(title, author, pages, pub, year, id);
 
 	myLibrary.push(newBook);
+	displayBook(id);
 }
 
 const displayDiv = document.querySelector('.display');
@@ -31,10 +32,11 @@ const ol = document.querySelector('.display ol');
 function displayBook(id) {
 	const bookList = document.createElement('li');
 	const bookInfoPara = document.createElement('p');
-	bookInfoPara.innerHTML = `<span>${title.value}</span> ${author.value}, ${pages.value}, ${pub.value} ${year.value}.`;
+	const bookInfoText = document.createElement('span');
+	bookInfoText.innerHTML = `<em>${title.value}</em> ${author.value}, ${pages.value} pages, ${pub.value} ${year.value}.`;
 
 	const deleteBtn = document.createElement('button');
-	deleteBtn.textContent = 'x';
+	deleteBtn.textContent = 'X';
 
 	// create deleteBtn attributes
 	const delBtnAttrs = {
@@ -47,21 +49,18 @@ function displayBook(id) {
 
 	// create read status elems
 	const readStatusPara = document.createElement('p');
+	const readStatusText = document.createElement('span');
+
 	const readStatusBtn = document.createElement('button');
-	readStatusBtn.textContent = 'Mark read';
+	readStatusBtn.textContent = 'Mark as read';
 
-	// create para and btn divs to group them for flex
-	const paraDiv = document.createElement('div');
-	const btnDiv = document.createElement('div');
+	bookInfoPara.prepend(bookInfoText);
+	readStatusPara.prepend(readStatusText);
+	bookInfoPara.appendChild(deleteBtn);
+	readStatusPara.appendChild(readStatusBtn);
 
-	paraDiv.appendChild(bookInfoPara);
-	paraDiv.appendChild(readStatusPara);
-
-	btnDiv.appendChild(deleteBtn);
-	btnDiv.appendChild(readStatusBtn);
-
-	bookList.appendChild(paraDiv);
-	bookList.appendChild(btnDiv);
+	bookList.appendChild(bookInfoPara);
+	bookList.appendChild(readStatusPara);
 
 	ol.appendChild(bookList);
 }
