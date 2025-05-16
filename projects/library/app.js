@@ -85,18 +85,19 @@ function displayBook(book) {
 	// create read status elems
 	const readStatusPara = document.createElement('p');
 	const readStatusText = document.createElement('span');
+	readStatusText.className = 'read-text';
 
 	const readStatusBtn = document.createElement('button');
 	readStatusBtn.textContent = 'Mark as read';
 
-	readStatusBtn.addEventListener('click', (e) => {
+	readStatusBtn.addEventListener('click', () => {
 		book.toggleRead();
 
 		if (book.read) {
-			readStatusText.textContent = 'You have read this book';
+			readStatusText.textContent = 'You have read this book ✅';
 			readStatusBtn.textContent = 'Mark not read';
 		} else {
-			readStatusText.textContent = 'You have not read this book';
+			readStatusText.textContent = 'You have not read this book ❌';
 			readStatusBtn.textContent = 'Mark as read';
 		}
 	});
@@ -104,11 +105,11 @@ function displayBook(book) {
 	const readYes = document.querySelector('.modal #yes');
 
 	if (readYes.checked) {
-		readStatusText.textContent = 'You have read this book';
+		readStatusText.textContent = 'You have read this book ✅';
 		readStatusBtn.textContent = 'Mark not read';
 		book.toggleRead();
 	} else {
-		readStatusText.textContent = 'You have not read this book';
+		readStatusText.textContent = 'You have not read this book ❌';
 		readStatusBtn.textContent = 'Mark as read';
 	}
 
