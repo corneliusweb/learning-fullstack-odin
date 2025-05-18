@@ -38,7 +38,6 @@ body {
 .container {
 	width: clamp(208px, 90%, 400px);
 	margin: auto;
-	min-height: 350px;
 	max-height: fit-content;
 	padding: 1rem 1.5rem;
 	padding-bottom: 1.5rem;
