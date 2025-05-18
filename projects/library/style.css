@@ -375,15 +375,23 @@ body {
 	position: absolute;
 	bottom: 7px;
 	right: 7px;
-	background: var(--primary-color);
-	padding: 12px;
+	background: #1b81c5;
+	padding: 10px;
 	color: #fff;
 	border-radius: 4px;
-	font-size: 14px;
+	font-size: 13px;
 	transition: 1s;
 	letter-spacing: 0.1px;
+	display: none;
+
+	.book-info {
+		color: #edeaea;
+		text-shadow: none;
+	}
 }
 
 .book-info {
 	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 0.7px;
 }
