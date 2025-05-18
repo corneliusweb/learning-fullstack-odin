@@ -1,22 +1,5 @@
 let myLibrary = [];
 
-// function Book(title, author, pages, pub, year, id) {
-// 	this.title = title;
-// 	this.author = author;
-// 	this.pages = pages;
-// 	this.pub = pub;
-// 	this.year = year;
-// 	this.id = id;
-// 	this.read = false;
-// }
-
-// set toggle read proto
-// Book.prototype.toggleRead = function () {
-// 	this.read = !this.read;
-// };
-
-//  Rewriting book obj with js class
-
 class Book {
 	constructor(title, author, pages, pub, year, id) {
 		this.title = title;
@@ -64,22 +47,44 @@ function displayBook(book) {
 	const bookInfoText = document.createElement('span');
 	bookInfoText.innerHTML = `<em>${book.title}</em> by ${book.author}, ${book.pages} pages, ${book.pub} ${book.year}.`;
 
-	const deleteBtn = document.createElement('button');
-	deleteBtn.textContent = 'X';
+	const deleteBookBtn = document.createElement('button');
+	deleteBookBtn.textContent = 'X';
 
-	// create deleteBtn attributes
+	// create & set deleteBookBtn attributes
 	const delBtnAttrs = {
 		'data-id': book.id,
 		class: 'del-btn',
 	};
 	Object.entries(delBtnAttrs).forEach(([key, value]) => {
-		deleteBtn.setAttribute(key, value);
+		deleteBookBtn.setAttribute(key, value);
 	});
 
-	deleteBtn.addEventListener('click', (e) => {
-		const bookId = e.target.getAttribute('data-id');
-		myLibrary = myLibrary.filter((b) => b.id !== bookId);
-		bookList.remove();
+	// get delete modal elems
+	const deleteWarnModal = document.querySelector('.delete-modal');
+	const deleteWarnBtns = document.querySelector('.delete-modal-btns');
+	const deletedBookInfo = document.querySelectorAll('.book-info');
+	const deletedBookNotif = document.querySelector('.delete-notice');
+
+	deleteBookBtn.addEventListener('click', () => {
+		deletedBookInfo.forEach((para) => (para.textContent = book.title));
+		deleteWarnModal.style.display = 'block';
+
+		deleteWarnBtns.addEventListener('click', (e) => {
+			if (e.target.classList.contains('delete')) {
+				const bookId = e.target.getAttribute('data-id');
+				myLibrary = myLibrary.filter((b) => b.id !== bookId);
+				bookList.remove();
+				deleteWarnModal.style.display = 'none';
+				deletedBookNotif.style.display = 'block';
+
+				// hide delete notif after 3s
+				setTimeout(() => {
+					deletedBookNotif.style.display = 'none';
+				}, 3000);
+			} else if (e.target.classList.contains('cancel')) {
+				deleteWarnModal.style.display = 'none';
+			}
+		});
 	});
 
 	// create read status elems
@@ -89,7 +94,7 @@ function displayBook(book) {
 	const readStatusBtn = document.createElement('button');
 	readStatusBtn.textContent = 'Mark as read';
 
-	readStatusBtn.addEventListener('click', (e) => {
+	readStatusBtn.addEventListener('click', () => {
 		book.toggleRead();
 
 		if (book.read) {
@@ -114,7 +119,7 @@ function displayBook(book) {
 
 	bookInfoPara.prepend(bookInfoText);
 	readStatusPara.prepend(readStatusText);
-	bookInfoPara.appendChild(deleteBtn);
+	bookInfoPara.appendChild(deleteBookBtn);
 	readStatusPara.appendChild(readStatusBtn);
 
 	bookList.appendChild(bookInfoPara);
